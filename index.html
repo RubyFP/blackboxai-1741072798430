@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubxy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes flicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+                opacity: 0.99;
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 15px #fff,
+                    0 0 25px #fff,
+                    0 0 50px rgb(255, 255, 255),
+                    0 0 100px rgb(255, 255, 255),
+                    0 0 150px rgb(255, 255, 255);
+            }
+            20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+                opacity: 0.4;
+                text-shadow: none;
+            }
+        }
+        .neon-text {
+            font-family: 'Dancing Script', cursive;
+            animation: flicker 3s infinite alternate;
+            color: #fff;
+            font-size: 7.5rem;
+            letter-spacing: 2px;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover::before {
+            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 0 5px rgba(255, 255, 255, 0.1),
+                0 0 10px rgba(255, 255, 255, 0.05);
+        }
+        body {
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .greeting {
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards 1s;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+        }
+        .nav-container {
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards 1.5s;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .nav-link:hover {
+            color: rgba(255, 255, 255, 1);
+            transform: translateY(-1px);
+        }
+        main {
+            transform: translateY(-5%);
+        }
+    </style>
+</head>
+<body class="p-4">
+    <main class="flex flex-col items-center justify-center space-y-8">
+        <h1 class="neon-text mb-10 select-none">Rubxy</h1>
+        
+        <p class="greeting mb-14">hi! nice to meet you :)</p>
+        
+        <nav class="nav-container flex flex-col items-center space-y-4">
+            <a href="#" class="nav-link text-white/80 px-8 py-2 min-w-[200px] text-center transition-all duration-300">terms of service</a>
+            <a href="#" class="nav-link text-white/80 px-8 py-2 min-w-[200px] text-center transition-all duration-300">price</a>
+            <a href="#" class="nav-link text-white/80 px-8 py-2 min-w-[200px] text-center transition-all duration-300">works</a>
+            <a href="#" class="nav-link text-white/80 px-8 py-2 min-w-[200px] text-center transition-all duration-300">contact</a>
+        </nav>
+    </main>
+</body>
+</html>
